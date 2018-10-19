@@ -1,0 +1,25 @@
+.page-wrapper-index.resources(appMouseWheel [scrollClass]="scrollClass")
+  #users.content-wrapper-index
+    .header-nav.mb-3
+      h1.headers
+        | Resources
+      .button-group
+          button.resource-button.feedback-btn((click)='addNewScholarship()', *ngIf="canCreateScholarships")
+            span
+              | New Scholarship
+          button.resource-button.feedback-btn((click)='addNewResource("internshipadd")', *ngIf="canCreateInternships")
+            span
+              | New Internship
+          button.resource-button.feedback-btn((click)='addNewResource("opportunityadd")', *ngIf="canCreateOpportunities")
+            span
+              | New Opportunity       
+    .justify-start.newTabs.mb-4
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('scholarships')" [ngClass]="{'sub-nav-item-selected': selectedTab === 'scholarships'}", *ngIf="canViewScholarships")
+        | Scholarships
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('internships')" [ngClass]="{'sub-nav-item-selected': selectedTab === 'internships'}", *ngIf="canViewInternships")
+        | Internships
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('opportunities')" [ngClass]="{'sub-nav-item-selected': selectedTab === 'opportunities'}", *ngIf="canviewOtherOpportunities")
+        | Other Opportunities
+    app-scholarships(*ngIf="selectedTab === 'scholarships'")
+    app-internships(*ngIf="selectedTab === 'internships'")
+    app-opportunities(*ngIf="selectedTab === 'opportunities'")

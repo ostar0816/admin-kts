@@ -1,0 +1,17 @@
+@import "~assets/stylesheets/style-guide";
+
+
+    .newBtn{
+        width: 160px;
+        margin: 5px 3px;
+    }
+    .newTabs{
+        border-bottom: 1px solid $color-nav-underline;
+    }
+    .newSubNav{
+        position: relative;
+        cursor: pointer;
+        width: auto;
+        height: 40px;
+    }
+    

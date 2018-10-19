@@ -1,0 +1,28 @@
+.page-wrapper-index(appMouseWheel [scrollClass]="scrollClass")
+  #organizations.content-wrapper-index
+    .space-between.mb-3
+      h1.headers
+        | Organizations
+      .justify-end
+        .primary-button.center.newBtn.feedback-btn((click)="addOrganization('sponsor')")
+          span
+            | New Sponsor
+        .primary-button.center.newBtn.feedback-btn((click)="newGroup()")
+          span
+            | New School Group
+        .primary-button.center.newBtn.feedback-btn((click)="addOrganization('school')")
+          span
+            | New KTS School
+    .justify-start.newTabs.mb-4
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('schools')" [ngClass]="{'sub-nav-item-selected': tab === 'schools'}")
+        | KTS Schools
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('sponsors')" [ngClass]="{'sub-nav-item-selected': tab === 'sponsors'}")
+        | KTS Sponsors
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('communities')" [ngClass]="{'sub-nav-item-selected': tab === 'communities'}")
+        | Community
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('schoolgroups')", [ngClass]="{'sub-nav-item-selected': tab === 'schoolgroups'}")
+        | KTS School Groups
+    app-schools-table(*ngIf="tab === 'schools'")
+    app-sponsors-table(*ngIf="tab === 'sponsors'")
+    app-communities-table(*ngIf="tab === 'communities'")
+    app-schoolgroups-table(*ngIf="tab === 'schoolgroups'")

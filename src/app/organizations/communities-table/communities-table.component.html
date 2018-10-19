@@ -1,0 +1,24 @@
+
+<div id="schools">
+  <div class="search-bar"><i class="fa fa-search search-icon"></i>
+    <input class="search-text" type="text" placeholder="Search communities..." [(ngModel)]="searchText" (keyup.enter)="searchItems()">
+  </div>
+  <ngx-loading [show]="loading"> </ngx-loading>
+  <div class="d-flex space-between px-4 mb-1">
+    <div class="table-header col-organization">Community</div>
+    <div class="table-header col-url">Url</div>
+    <div class="table-header col-created">Created date</div>
+    <div class="table-header col-edit"></div>
+  </div>
+  <div class="table-content-without-search" #scrollVariable appInfiniteScroller [scrollPercent]="90" [scrollCallback]="myScrollCallBack.bind(this)">
+    <div class="list" *ngFor="let organization of organizations">
+      <div class="d-flex space-between bg-white px-4 py-1 pointer" (click)="editOrganization(organization.id)">
+        <div class="table-data-primary col-organization">{{organization.name}}</div>
+        <div class="table-data-primary col-url">{{organization.url}}</div>
+        <div class="table-data col-created">{{organization.created_at}}</div>
+        <div class="table-data col-edit"><i class="fa fa-eye edit-row" (click)="editOrganization(organization.id)"></i></div>
+      </div>
+    </div>
+    <div class="infinite-scroll-loading infinite-scroll-loading" *ngIf="infiniteScrollLoading">Loading ...</div>
+  </div>
+</div>
